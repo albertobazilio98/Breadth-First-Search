@@ -5,11 +5,24 @@
     <link rel="stylesheet" href="app.css">
   </head>
   <body>
-    <div class="app">
-      <div class="container">
-
-      </div>
-    </div>
+    Para executar as funções de busca em largura, abra o console do navegador (F12 no chrome).
+    <br/><br/>
+    Para criar um novo grafo gerado aleatóriamente use o comando:
+    <br/><br/>
+    > var G = new graph(< vertices>, < digraph>)
+    <br/><br/>
+    sendo G, a variavel em que o grafo será armazenado, e os parametros, vertices, um inteiro que representa o numero de vertices que terá o grafo gerado e 
+    digraph um booleano que caso verdadeiro, o grafo gerado sera orientado, e caso falso, não.
+    <br/><br/>
+    Caso deseje usar um grafo custumizado, é possivel seta-lo manualmente usando:
+    <br/>
+    G.vetices = < quantidade de vertices do grafo custumizado>
+    <br/>
+    G.adj = < matriz de adjacencias equivalente ao grafo desejado>
+    <br/><br/>
+    Para executar a busca em largura, deve se usar o comando:
+    <br/><br/>
+    G.BFS(< indice do vértice inicial>)
 
   </body>
   <script type="text/javascript" src = "app.js"></script>
