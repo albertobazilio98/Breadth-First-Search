@@ -28,6 +28,8 @@ class graph {
     this.adj = new Array(v);
     this.Q = new queue(v);
     this.digraph = digraph;
+
+    this.time = 0;
     for (var i = 0; i < v; i++) {
       this.adj[i] = new Array(v);
     }
@@ -51,7 +53,7 @@ class graph {
     }
     console.log(this.adj)
   }
-  colorfy(s) {
+  colorfyB(s) {
     for(var i = 0; i < this.vertices; i++) {
       this.color[i] = 'w';
       this.distance[i] = Infinity;
@@ -62,7 +64,7 @@ class graph {
 
   }
   BFS(s) {
-    this.colorfy(s);
+    this.colorfyB(s);
     this.Q.insert(s);
     while(!this.Q.empty()) {
       var u = this.Q.head();
@@ -80,6 +82,33 @@ class graph {
     console.log("Cores", this.color);
     console.log("Distancia", this.distance);
     console.log("Pi", this.pi);
+  }
+  colorfyD() {
+    for(var i = 0; i < this.vertices; i++) {
+      this.color[i] = 'w';
+      this.distance[i] = Infinity;
+      this.pi[i] = null;
+    }
+    this.time = 0;
+  }
+  DFS(s) {
+    this.colorfyD();
+    for(var u = 0; u < this.vertices; u++) {
+      if (this.color[u] == 'w') {
+        this.DFS_visit(u);
+      }
+    }
+  }
+  DFS_visit(u) {
+    this.color[u] = 'g';
+    this.distance[u] = ++this.time;
+    for (var v = 0; v < this.vertices; v++) {
+      if (this.adj[u][v] == 1 && this.color[v] == 'w') {
+        this.pi[v] = u;
+        this.DFS_visit(v);
+      }
+    }
+    this.color[u] = 'b';
   }
 }
 
