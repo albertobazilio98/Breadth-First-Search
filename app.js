@@ -91,7 +91,7 @@ class graph {
     }
     this.time = 0;
   }
-  DFS(s) {
+  DFS() {
     this.colorfyD();
     for(var u = 0; u < this.vertices; u++) {
       if (this.color[u] == 'w') {
